@@ -1,0 +1,29 @@
+* Den Spieler evtl auch zeichnen, sodass es 
+einheitlich ist
+
+* Die Map als einzelne Abschnitte laden, sodass die
+Qualität besser wird.
+
+* Objecte wie Teddy, Silhouette zeichnen 
+-> einheitlicher Stil
+
+* Dialoge neu schreiben -> durchgängige und
+schlüssige Story
+
+* Die Logik in den Räumen bug-rebuster ausarbeiten
+
+* Die Rätsel weiter ausarbeiten 
+-> mehr tiefgang? 
+-> kombiniert mit Dialogen
+
+* Animationen einfügen
+
+* Evtl Erinnerungen im Inventar ausbauen
+
+* Mit mehr Effekten spielen (geplante Schwäze beim 
+Plateaugang umsetzen etc)
+
+* Bug fixen!
+
+
+
