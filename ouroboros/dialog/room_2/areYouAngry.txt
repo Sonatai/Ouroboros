@@ -17,7 +17,7 @@ Self: Well... Yeah. I mean. No! I want... I want answers! So.
 Self: WHY?!?![waitForEnter]
 §: Because nothing I say will bring you closer to the center.[waitForEnter]
 Self: Then how do I get there?[waitForEnter]
-§: As I just told you! Anybodies words will not never bring you closer:
+§: As I just told you! Anybodies words will never bring you closer:
    This is your path. You ought to be somebody, then anybody, then nobody, then...[waitForEnter]
 Self: Then?[waitForEnter]
 §:  ...[waitForEnter]
@@ -38,7 +38,7 @@ Self: Hey! What then?[waitForEnter]
 [===]*Okay, I need to think*[waitForEnter]
 [===][choice:"*I need to find an exit!*","*I need to get more information from this weirdo!*","*I need to calm down!*"][waitForAnswer][jumpTo:1.2.#]
 [===|===][1.3.1]
-[===|===]*I need to find an exit!*[waitForEnter],0[jumpTo:2]
+[===|===]*I need to find an exit!*[waitForEnter][jumpTo:2]
 [===|===]
 [===|===][1.3.2]
 [===|===]*I need to get more information from this weirdo!*[waitForEnter][jumpTo:2]

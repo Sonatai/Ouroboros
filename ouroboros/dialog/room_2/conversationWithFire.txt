@@ -44,7 +44,7 @@ Self: HEEYY! YOU! Up there! Talk to me!
 [===|===][===|===]Self: Anybody? What?[waitForEnter]
 [===|===][===|===]§: Or was he nobody? No. That makes no sense. Nobody doesn't do anything except Anybody, which does anything.[waitForEnter]
 [===|===][===|===]Self: Stop talking nonsense and answer me![waitForEnter]
-[===|===][===|===]§: Well, guess...[timeout:1] Anybody just invited anybody to become nobody again.[waitForEnter][jumpTo:1.2.3]
+[===|===][===|===]§: Well, I guess...[timeout:1] Somebody just invited anybody to become nobody again.[waitForEnter][jumpTo:1.2.3]
 
 [===|===][1.2.2.2]
 [===|===]Self: Please talk to me! I am confused.[waitForEnter]
