@@ -127,7 +127,7 @@ public class event_script_A : Eventscript {
 			case 1:
 				if (dialogManager.getDialogOutput () == "falling") {
 					playerCamera.enabled = false;
-					victimCamera.enabled = true;
+                    if (victimCamera!=null) { victimCamera.enabled = true; }
 					float tempLocX = victim.transform.position.x;
 					float tempLocY = victim.transform.position.y;
 					float tempSizeX = victim.transform.localScale.x;
@@ -154,7 +154,7 @@ public class event_script_A : Eventscript {
 
 				}
 				if (dialogManager.getDialogOutput () == "fallingEnd") {
-					victimCamera.enabled = false;
+                    if (victimCamera != null) { victimCamera.enabled = false; }
 					playerCamera.enabled = true;
 					fallingState = false;
 					Destroy (victim);
