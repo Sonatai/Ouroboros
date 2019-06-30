@@ -73,16 +73,16 @@ public class GameStateController : MonoBehaviour
 
     }
 
-    public void CreateSphere(string input)
-    {
-        GameObject go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        Debug.Log(""+input);
+    public string AvailableObjects() {
+        string result = "Available objects:\n";
+        foreach (GameObject go in listeners) {
+            result += go.name + "\n";
+        }
+        return result;
     }
 
 
-
-
-	void Update () {
+    void Update () {
 
 		//size calculation utility variables:
 		

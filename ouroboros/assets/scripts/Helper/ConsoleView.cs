@@ -11,8 +11,8 @@ using UnityEditor;
 
 public class ConsoleView : MonoBehaviour
 {
-    ConsoleController console = new ConsoleController();
-    GameStateController gamestate;
+    ConsoleController console;
+ 
     bool didShow = false;
 
     public GameObject ViewContainer; //Container for console view, should be a child of this GameObject
@@ -33,19 +33,15 @@ public class ConsoleView : MonoBehaviour
 
     void Start()
     {
-        gamestate = GameObject.FindObjectOfType(typeof(GameStateController)) as GameStateController;
-
+        console = new ConsoleController();
+        console.visibilityChanged -= OnVisibilityChanged;
+        console.logChanged -= OnLogChanged;
         if (console != null)
         {
              console.visibilityChanged += OnVisibilityChanged;
              console.logChanged += OnLogChanged;
         }
         UpdateLogStr(console.log);
-    }
-    ~ConsoleView()
-    {
-        console.visibilityChanged -= OnVisibilityChanged;
-        console.logChanged -= OnLogChanged;
     }
 
     void UpdateLogStr(string[] newLog)
@@ -99,10 +95,7 @@ public class ConsoleView : MonoBehaviour
     /// 
     public void RunCommand()
     {
-        if (gamestate.executeStateCommand(inputField.text)) { return; }
-
         console.RunCommandString(inputField.text);
-        
         inputField.text = "";
     }
 

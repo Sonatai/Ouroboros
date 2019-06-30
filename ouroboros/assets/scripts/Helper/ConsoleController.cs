@@ -16,7 +16,7 @@ public class ConsoleController
 {
     #region Event declarations
     // Used to communicate with ConsoleView
-        public delegate void LogChangedHandler(string[] log);
+    public delegate void LogChangedHandler(string[] log);
         public event LogChangedHandler logChanged;
 
         public delegate void VisibilityChangedHandler(bool visible);
@@ -48,8 +48,9 @@ public class ConsoleController
     Queue<string> scrollback = new Queue<string>(scrollbackSize);
     System.Collections.Generic.List<string> commandHistory = new System.Collections.Generic.List<string>();
     Dictionary<string, CommandRegistration> commands = new Dictionary<string, CommandRegistration>();
+    GameStateController gamestate;
 
-	public string[] log { get; private set; } //Copy of scrollback as an array for easier use by ConsoleView
+    public string[] log { get; private set; } //Copy of scrollback as an array for easier use by ConsoleView
 
     const string repeatCmdName = "!!"; //Name of the repeat command, constant since it needs to skip these if they are in the command history
 
@@ -108,13 +109,28 @@ public class ConsoleController
         PlayerPrefs.Save();
     }
     //---------------------------------------------------------
+    void GameState(string[] args)
+    {
+        if (args.Length > 0)
+        {
+            gamestate.executeStateCommand(args[0]);
+        }
+        else {
+            AppendLogLine(gamestate.AvailableObjects());
+        }
+        
+    }
+    //---------------------------------------------------------
     #endregion
     //---------------------------------------------------------
 
     // CONSTRUCTOR:
     public ConsoleController()
     {
+        gamestate = GameObject.FindObjectOfType(typeof(GameStateController)) as GameStateController;
+        
         //When adding commands, you must add a call below to registerCommand() with its name, implementation method, and help text.
+        RegisterCommand("gamestate", GameState, "access game objects and execute functions");
         RegisterCommand("babble", Babble, "Example command that demonstrates how to parse arguments. babble [word] [# of times to repeat]");
         RegisterCommand("echo", Echo, "echoes arguments back as array (for testing argument parser)");
         RegisterCommand("help", Help, "Print this help.");
@@ -149,6 +165,7 @@ public class ConsoleController
 
     public void RunCommandString(string commandString)
     {
+        Debug.Log("Running command: "+commandString);
         AppendLogLine("$ " + commandString);
 
         string[] parsedCommand = ParseArguments(commandString);
