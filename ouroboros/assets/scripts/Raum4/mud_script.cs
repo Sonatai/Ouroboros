@@ -49,7 +49,8 @@ public class mud_script : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		if (counter < 2) {
 			counter++;
 		} else {
@@ -99,7 +100,8 @@ public class mud_script : MonoBehaviour {
 	}
 
 	public bool isFilling(){
-		return draining;}
+		return draining;
+    }
 	
 	public bool isDraining(){
 		return filling;

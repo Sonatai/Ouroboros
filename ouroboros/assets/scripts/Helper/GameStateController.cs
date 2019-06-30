@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStateController : MonoBehaviour
 {
@@ -9,26 +10,29 @@ public class GameStateController : MonoBehaviour
 	private player_script player;
 	private GameObject playerCameraObject;
 	private Camera playerCamera;
-    private Eventscript[] Room;
 
     private List<GameObject> listeners = new List<GameObject>();
     
 	void Start ()
     {
+        // get root objects in scene
+        List<GameObject> rootObjects = new List<GameObject>();
+        Scene scene = SceneManager.GetActiveScene();
+        scene.GetRootGameObjects(rootObjects);
+
+        // iterate root objects and do something
+        for (int i = 0; i < rootObjects.Count; ++i)
+        {
+            GameObject gameObject = rootObjects[i];
+            AddListener(gameObject);
+        }//Adding all game objects!
+
         Debug.developerConsoleVisible = true;
 
 		player = GameObject.FindObjectOfType (typeof(player_script)) as player_script;
 		playerCameraObject = GameObject.FindWithTag ("MainCamera");
 		playerCamera = playerCameraObject.GetComponent<Camera> ();
-
-        Room = new Eventscript[6];
-        Room[0] = GameObject.FindObjectOfType(typeof(event_script_A)) as event_script_A;
-        Room[1] = GameObject.FindObjectOfType(typeof(event_script_R1)) as event_script_R1;
-        Room[2] = GameObject.FindObjectOfType(typeof(event_script_R2)) as event_script_R2;
-        Room[3] = GameObject.FindObjectOfType(typeof(event_script_R3)) as event_script_R3;
-        Room[4] = GameObject.FindObjectOfType(typeof(event_script_R4)) as event_script_R4;
-        Room[5] = GameObject.FindObjectOfType(typeof(event_script_R5)) as event_script_R5;
-
+        
         AddListener(gameObject);
         AddListener(GameObject.Find("player"));
         AddListener(GameObject.Find("EventManager_Anfang"));

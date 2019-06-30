@@ -93,8 +93,7 @@ public class ConsoleView : MonoBehaviour
     {
         ViewContainer.SetActive(visible);
     }
-
-   
+    
     /// 
     /// Event that should be called by anything wanting to submit the current input to the console.
     /// 

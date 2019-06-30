@@ -9,6 +9,7 @@ using System.Text;
 using System.Collections;
 using Boo.Lang;
 
+//Function interface for command execution logic implementation!
 public delegate void CommandHandler(string[] args);
 
 public class ConsoleController
